@@ -1,0 +1,128 @@
+<html>
+
+<head>
+
+	<script>
+
+
+		var nomeHotel = prompt("Qual o nome do Hotel?");
+		alert('O nome do Hotel é: ' + nomeHotel);
+
+		var nomeUsuario = prompt("Qual o nome do usuário?");
+		alert("Seja bem vinde ao Hotel " + nomeHotel + ", " + nomeUsuario + ".");
+
+		var senha;
+		const validar = 2678;
+
+
+		senha = parseInt(prompt("Digite a senha:"));
+
+		if (senha === validar) {
+			alert('Success!');
+			inicio();
+		} else {
+			alert('Tente novamente.');
+		}
+
+
+
+
+		function inicio() {
+
+
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Reserva de Quartos 2.) Cadastro de Hóspedes 3.) Abastecimento de Carros 4.) Sair'));
+
+			switch (escolha) {
+				case 1:
+					reserva_quartos();
+					break;
+				case 2:
+					cadastro_hospedes();
+					break;
+				case 3:
+					abastecer_carros();
+					break;
+				case 4:
+					sair();
+					break;
+				default:
+					erro();
+					break;
+			}
+
+		}
+
+		function reserva_quartos() {
+
+			alert('HOTEL ' + nomeHotel + ' - RESERVA DE QUARTOS');
+
+			var valor = parseInt(prompt("Qual o valor padrão da diária?"));
+			var diaria = parseInt(prompt("Quantas diárias serão necessárias?"));
+			var total = valor * diaria;
+
+			alert("O valor de " + diaria + " dias de hospedagem é de " + total + ".");
+
+			var confirmação = prompt("Você confirma a reserva para " + nomeUsuario + " por 10 dias? S/N");
+			if (confirmação === "S") {
+				alert("Reserva efetuada para " + nomeUsuario + ". O valor total é de " + total + ".");
+			} else {
+				alert("Operação cancelada.");
+                inicio();
+			}
+
+			inicio();
+		}
+
+		function cadastro_hospedes() {
+
+			alert('HOTEL ' + nomeHotel + ' - CADASTRO DE HÓSPEDES');
+
+			var valor = parseInt(prompt("Qual o valor padrão da diária?"));
+			var nomeHospede = prompt("Qual o nome do Hóspede?");
+			var idadeHospede = parseInt(prompt("Qual a idade do Hóspede?"));
+
+			if (idadeHospede <= 6) {
+				alert( nomeHospede + " cadastrada(o) com sucesso. " + nomeHospede + " possui gratuidade.");				
+			} else if (idadeHospede >= 60) {
+				alert( nomeHospede + " cadastrada(o) com sucesso. " + nomeHospede + " paga meia.");
+			} else if ( nomeHospede === "PARE" | "pare"){
+				
+			} else {
+				alert(nomeHospede + " cadastrado(a) com sucesso.");
+			}
+
+			cadastro_hospedes();
+			inicio();
+		}
+
+		function abastecer_carros() {
+			alert('HOTEL ' + nomeHotel + ' - ABASTECER');
+			inicio();
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 4');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				alert("Muito obrigado e até logo, " + nomeUsuario + ".")
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+
+
+		
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
